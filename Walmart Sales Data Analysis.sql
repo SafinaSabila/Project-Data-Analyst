@@ -83,7 +83,7 @@ FROM sales;
 -- ---------------------------- Produk -------------------------------
 -- --------------------------------------------------------------------
 
--- Berapa banyak produk kain yang dimiliki data ?
+-- Berapa banyak produk yang dimiliki data ?
 SELECT
 	DISTINCT product_line
 FROM sales;
@@ -96,7 +96,7 @@ FROM sales
 GROUP BY payment
 ORDER BY qty DESC;
 
--- Apa saja produk kain yang paling laris ?
+-- Apa saja produk yang paling laris ?
 SELECT
 	SUM(quantity) as qty,
     product_line
@@ -120,7 +120,7 @@ FROM sales
 GROUP BY month_name 
 ORDER BY cogs;
 
--- Sebutkan produk kain yang memiliki pendapatan terbesar?
+-- Sebutkan produk yang memiliki pendapatan terbesar?
 SELECT
 	product_line,
 	SUM(total) as total_revenue
@@ -137,7 +137,7 @@ FROM sales
 GROUP BY city, branch 
 ORDER BY total_revenue;
 
--- Sebutkan produk kain yang memiliki PPN terbesar?
+-- Sebutkan produk yang memiliki PPN terbesar?
 SELECT
 	product_line,
 	AVG(tax_pct) as avg_tax
@@ -151,7 +151,7 @@ SELECT
 	AVG(quantity) AS avg_qnty
 FROM sales;
 
--- Menambahkan kolom berdasarkan kategori kualitas produk kain
+-- Menambahkan kolom berdasarkan kategori kualitas produk 
 SELECT
 	product_line,
 	CASE
@@ -169,7 +169,7 @@ FROM sales
 GROUP BY branch
 HAVING SUM(quantity) > (SELECT AVG(quantity) FROM sales);
 
--- Sebutkan produk kain yang paling umum digunakan berdasarkan jenis kelamin?
+-- Sebutkan produk yang paling umum digunakan berdasarkan jenis kelamin?
 SELECT
 	gender,
     product_line,
@@ -178,7 +178,7 @@ FROM sales
 GROUP BY gender, product_line
 ORDER BY total_cnt DESC;
 
--- Berapa rata-rata reting dari produk kain?
+-- Berapa rata-rata reting dari produk ?
 SELECT
 	ROUND(AVG(rating), 2) as avg_rating,
     product_line
